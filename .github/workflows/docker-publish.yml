@@ -35,7 +35,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile.production
-          platforms: linux/amd64
+          platforms: linux/amd64, linux/arm64/v8
           push: true
           tags: |
             renedyhr/ai-tale-generator:${{ env.VERSION }}
