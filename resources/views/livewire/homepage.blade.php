@@ -1,5 +1,5 @@
-<div class="flex items-center justify-center h-screen bg-gradient-to-r from-gray-100 to-gray-300">
-    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+<div class="flex items-center justify-center h-auto bg-gradient-to-r from-gray-100 to-gray-300 flex-col">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md mt-10">
         <h1 class="text-2xl font-bold text-center text-gray-700 mb-6">AI Tale Generator</h1>
         <form class="space-y-4" wire:submit="generate">
             <div>
@@ -53,5 +53,16 @@
                 class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-500 transition duration-200">Generate
                 Tale</button>
         </form>
+    </div>
+
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md mt-5 mb-10">
+        <h1 class="text-2xl font-bold text-center text-gray-700 mb-2">Latest Stories</h1>
+        @foreach($stories as $story)
+            <div class="mb-2">
+                <a href="{{ route('story', ['uuid' => $story->uuid]) }}"
+                    class="block text-blue-600 font-semibold text-md hover:text-blue-500">{{ $story->generated_story_header_html }}</a>
+                <p class="text-gray-600">{{ $story->created_at->locale('da_DK')->diffForHumans() }}</p>
+            </div>
+        @endforeach
     </div>
 </div>

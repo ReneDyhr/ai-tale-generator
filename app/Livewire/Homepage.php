@@ -51,7 +51,9 @@ class Homepage extends Component
         // echo '<img width="600px" src="data:image/jpeg;base64,' . $response->data[0]->b64_json . '" />';
         // exit();
         // dd($response);
-        return view('livewire.homepage');
+        return view('livewire.homepage', [
+            'stories' => Story::latest()->limit(10)->get(),
+        ]);
     }
 
     public function generate()
